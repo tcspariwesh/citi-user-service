@@ -18,12 +18,12 @@ public class UserService implements IUserService {
 	@Autowired
 	UserRepository userRepository;
 	@Override
-	public void saveUser(User user) {
+	public Quote saveUser(User user) {
 		Quote quote = restTemplate.getForObject(
 				"https://quoters.apps.pcfone.io/api/random", Quote.class);
 		System.out.println(quote.toString());
 		userRepository.save(user);
 		System.out.println(user.getName());
+		return quote;
 	}
-
 }

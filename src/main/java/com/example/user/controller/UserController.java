@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.user.Quote;
 import com.example.user.entity.User;
 import com.example.user.service.IUserService;
 
@@ -17,13 +18,13 @@ public class UserController {
 	IUserService userService;
 	@PostMapping("/user")
 	@ResponseStatus(code = HttpStatus.CREATED)
-	ResponseEntity<User> saveUser(@RequestBody User user) {
-		ResponseEntity<User> responseEntity = null;
+	ResponseEntity<Quote> saveUser(@RequestBody User user) {
+		ResponseEntity<Quote> responseEntity = null;
 		try {
-			userService.saveUser(user);
-			responseEntity = new ResponseEntity<User>(user, HttpStatus.OK);
+			Quote quote = userService.saveUser(user);
+			responseEntity = new ResponseEntity<Quote>(quote, HttpStatus.OK);
 		} catch (Exception e) {
-			responseEntity = new ResponseEntity<User>(HttpStatus.CONFLICT);
+			responseEntity = new ResponseEntity<Quote>(HttpStatus.CONFLICT);
 		}
 		return responseEntity;
 	}
