@@ -1,0 +1,2 @@
+ java -jar target/service-registration-and-discovery-service-0.0.1-SNAPSHOT.jar
+ 
